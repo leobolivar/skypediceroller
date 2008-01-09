@@ -12,10 +12,10 @@ public class SendMessageCommand {
 		
 		final HashMap  resources = (HashMap) resource;
 		final String   message = (String) resources.get("message");
-		final String   recipientUserID = (String) resources.get("recipient");
+		final String[]   recipientUserID = (String[]) resources.get("recipient");
 
 		ChatMessage send = Skype.chat(recipientUserID).send(message);
-		System.out.println(send.getSender().getFullName());
+		 
 		
 		return resource;
 	}
