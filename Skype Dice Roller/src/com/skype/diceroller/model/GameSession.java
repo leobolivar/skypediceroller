@@ -14,7 +14,7 @@ public class GameSession {
 	
 	private Chat 			chatRoom;
 	
-	
+	private boolean			diceRollEnabled;
 	
 
 	public Chat getChatRoom() {
@@ -41,6 +41,14 @@ public class GameSession {
 		this.players = players;
 	}
 	
+	public boolean isDiceRollEnabled() {
+		return diceRollEnabled;
+	}
+
+	public void setDiceRollEnabled(boolean diceRollEnabled) {
+		this.diceRollEnabled = diceRollEnabled;
+	}
+
 	
 	
 	
