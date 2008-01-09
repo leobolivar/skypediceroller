@@ -1,10 +1,14 @@
 package com.skype.diceroller.controller.commands;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import com.skype.diceroller.controller.resources.DiceRollRequest;
 import com.skype.diceroller.controller.resources.Resource;
+import com.skype.diceroller.model.GameSession;
 
 public class RollDiceCommand extends Command {
 
@@ -15,6 +19,22 @@ public class RollDiceCommand extends Command {
 			rollDice(request);
 		}
 
+		return resources;
+	}
+
+	public Object execute(Object resources) {
+		
+		Map  			resourcesMap = (HashMap)resources;
+		List  			diceRollRequests = (ArrayList) resourcesMap.get("diceRollRequests");
+		GameSession		gameSession = (GameSession) resourcesMap.get("gameSession");
+		
+		if (gameSession.isDiceRollEnabled()) {
+			for (Iterator iter = diceRollRequests.iterator(); iter.hasNext();) {
+				DiceRollRequest request = (DiceRollRequest) iter.next();
+				rollDice(request);
+			}
+		}
+		
 		return resources;
 	}
 	
